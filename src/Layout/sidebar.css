@@ -1,0 +1,29 @@
+/* SCROLLBAR CSS */
+body {
+    overflow-y: scroll;
+    scrollbar-width: thin;
+}
+
+/* Chrome / Edge / Safari */
+body::-webkit-scrollbar {
+    width: 6px;
+}
+body::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 3px;
+}
+/* SIDEBAR SCROLL FIX */
+#scrollbar {
+    height: 100vh;          /* পুরো স্ক্রিনের উচ্চতা */
+    overflow-y: auto;       /* ভেতরে স্ক্রল হবে */
+    overflow-x: hidden;     /* পাশের স্ক্রল বন্ধ */
+}
+
+/* Scrollbar Style */
+#scrollbar::-webkit-scrollbar {
+    width: 6px;
+}
+#scrollbar::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 3px;
+}

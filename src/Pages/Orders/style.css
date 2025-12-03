@@ -1,0 +1,206 @@
+body {
+    background: linear-gradient(135deg, #e3f2fd, #f9f9ff);
+    color: #212529;
+    /* padding: 2rem; */
+    font-family: "Poppins", sans-serif;
+  }
+
+  /* 🧾 Invoice Container */
+  .invoice {
+    background: #ffffff;
+    padding: 2.5rem;
+    border-radius: 0.8rem;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+    border-top: 6px solid #007bff;
+    transition: all 0.3s ease;
+  }
+
+  .invoice:hover {
+    box-shadow: 0 10px 28px rgba(0, 123, 255, 0.2);
+  }
+
+  /* 🎯 Header Titles */
+  .invoice h3 {
+    color: #1565c0;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.5rem;
+  }
+
+  .invoice h4 {
+    color: #e91e63;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  .text-muted {
+    color: #6c757d !important;
+  }
+
+  /* ✨ Section Titles (Bill To, Ship To, Notes) */
+  h6 {
+    font-weight: 600;
+    color: #00796b;
+    border-left: 4px solid #26a69a;
+    padding-left: 6px;
+    margin-bottom: 0.5rem;
+  }
+
+  /* 📋 Table */
+  .table {
+    border-collapse: collapse;
+    width: 100%;
+    border-radius: 0.5rem;
+    overflow: hidden;
+  }
+
+  .table thead th {
+    background: linear-gradient(90deg, #1976d2, #42a5f5);
+    color: #fff;
+    border: none;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+  }
+
+  .table tbody tr:nth-child(odd) {
+    background: #f1f9ff;
+  }
+
+  .table tbody tr:nth-child(even) {
+    background: #ffffff;
+  }
+
+  .table tbody tr:hover {
+    background: #e3f2fd;
+    transition: 0.3s ease;
+  }
+
+  .table td {
+    padding: 0.75rem;
+    vertical-align: middle;
+  }
+
+  /* ✏️ Input fields inside table */
+  .table input[type="number"],
+  .table input[type="text"] {
+    width: 100%;
+    border: none;
+    background: transparent;
+    color: #333;
+    font-weight: 500;
+    text-align: center;
+  }
+
+  .table input:focus {
+    outline: none;
+    background: #f0fcff;
+    border-radius: 0.3rem;
+  }
+
+  /* 💰 Subtotal & Totals */
+  #subtotal,
+  #grandTotal {
+    font-weight: 700;
+    color: #2e7d32;
+  }
+
+  #grandTotal {
+    font-size: 1.6rem;
+    color: #388e3c;
+  }
+
+  /* 🧮 Inputs (Discount, Shipping) */
+  input.form-control-sm {
+    border: 1px solid #e0e0e0;
+    border-radius: 0.4rem;
+    text-align: right;
+  }
+
+  input.form-control-sm:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
+  }
+
+  /* 🧩 Buttons */
+  .btn {
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1.2rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .btn-success {
+    background: linear-gradient(90deg, #00c853, #43a047);
+    color: #fff;
+  }
+
+  .btn-success:hover {
+    background: linear-gradient(90deg, #43a047, #2e7d32);
+  }
+
+  .btn-outline-success {
+    border: 2px solid #00c853;
+    color: #00c853;
+    background: #fff;
+  }
+
+  .btn-outline-success:hover {
+    background: #00c853;
+    color: #fff;
+  }
+
+  .btn-outline-danger {
+    border: 2px solid #e53935;
+    color: #e53935;
+    background: #fff;
+  }
+
+  .btn-outline-danger:hover {
+    background: #e53935;
+    color: #fff;
+  }
+
+  /* 📝 Notes Box */
+  textarea {
+    border-radius: 0.5rem;
+    border: 1px solid #cfd8dc;
+    background: #f8fafc;
+    width: 100%;
+    padding: 0.6rem;
+    transition: 0.3s;
+    resize: none;
+  }
+
+  textarea:focus {
+    border-color: #26a69a;
+    background: #ffffff;
+  }
+
+  /* 💡 Highlight totals section */
+  .text-end .row.g-2 {
+    background: #f1f8e9;
+    padding: 1rem;
+    border-radius: 0.6rem;
+  }
+
+  /* 🖨️ Print Styles */
+  @media print {
+    body {
+      background: #fff;
+      padding: 0;
+    }
+
+    .no-print {
+      display: none !important;
+    }
+
+    .invoice {
+      box-shadow: none;
+      border: none;
+      border-radius: 0;
+      margin: 0;
+    }
+  }
