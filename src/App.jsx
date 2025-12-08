@@ -47,6 +47,9 @@ import StockList from './Pages/Stocks/StockList';
 import LowStock from './Pages/Stocks/LowStock';
 import OverStock from './Pages/Stocks/OverStock';
 import Counter from './components/Counter';
+import PrivateRoute, { AuthContext } from './route/PrivateRoute';
+
+
 
 
 
@@ -67,8 +70,9 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-         <Route path="/Login" element={<Login />} />
-        <Route path="/" element={<Layout />}>
+        <Route path="/Login" element={<Login />} />
+        <Route path="/" element={<PrivateRoute> <Layout /> </PrivateRoute>}>
+
           {/* Dashboard */}
           <Route index element={<Dashboard />} />
 
@@ -79,29 +83,29 @@ function App() {
 
           {/* Product routes */}
           <Route path="/productList" element={<ProductsList />} />
-         <Route path="/product/create" element={<CreateProduct />} />
+          <Route path="/product/create" element={<CreateProduct />} />
           <Route path="/product/edit/:productID" element={<EditProduct />} />
 
 
           {/* Order routes */}
-          <Route path="/orderList" element={< OrderList/>} />
+          <Route path="/orderList" element={< OrderList />} />
           <Route path="/order/create" element={<CreateOrder />} />
-          <Route path="/order/invoice/:id" element={<OrderInvoice/>} />
+          <Route path="/order/invoice/:id" element={<OrderInvoice />} />
 
-        
+
 
           {/* supplier routes */}
-          <Route path="/supplierList" element={< SupplierList/>} />
+          <Route path="/supplierList" element={< SupplierList />} />
           <Route path="/supplier/create" element={<CreateSupplier />} />
           <Route path="/supplier/edit/:supplierID" element={<EditSupplier />} />
-        
-        
-        
+
+
+
           {/* Warehouse routes */}
-          <Route path="/warehouseList" element={< WarehouseList/>} />
-          <Route path="/warehouse/create" element={<CreateWarehouse/>} />
+          <Route path="/warehouseList" element={< WarehouseList />} />
+          <Route path="/warehouse/create" element={<CreateWarehouse />} />
           {/* <Route path="/warehouse/edit/:warehouseID" element={<Editwarehouse />} /> */}
-        
+
 
 
 
@@ -109,9 +113,9 @@ function App() {
           <Route path="/role" element={<RoleList />} />
           <Route path="/role/create" element={<CreateRole />} />
           <Route path="/role/edit/:roleId" element={<EditRole />} />
-         
-         
-         
+
+
+
           {/* Users routes */}
           <Route path="/user" element={<UserList />} />
           <Route path="/user/create" element={<CreateUser />} />
@@ -119,23 +123,23 @@ function App() {
 
 
 
-           {/* Purchases routes */}
-         <Route path="/purchase/create" element={<CreatePurchase />} />
+          {/* Purchases routes */}
+          <Route path="/purchase/create" element={<CreatePurchase />} />
 
-         <Route path="/purchaseList" element={< PurchasesList/>} />
-         {/* <Route path="/orderList" element={< OrderList/>} /> */}
-      
-         
+          <Route path="/purchaseList" element={< PurchasesList />} />
+          {/* <Route path="/orderList" element={< OrderList/>} /> */}
 
-            {/* Stock routes */}
+
+
+          {/* Stock routes */}
           {/* <Route path="/stocksList" element={<StockList />} /> */}
-         
+
           {/* Login routes */}
 
 
 
 
-        {/* Stock routes */}
+          {/* Stock routes */}
           <Route path="/stockslist" element={<StockList />} />
           <Route path="/lowstock" element={<LowStock />} />
           <Route path="/overstock" element={<OverStock />} />
@@ -146,8 +150,8 @@ function App() {
 
 
           <Route path="/counter" element={<Counter />} />
-          
-         
+
+
 
 
 

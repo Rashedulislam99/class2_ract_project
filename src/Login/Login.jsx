@@ -1,6 +1,50 @@
-import React from 'react'
+import axios from 'axios';
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
+   const navigate= useNavigate()
+
+    const [user, setUser] = useState({
+        username:"",
+        password:"",
+    })
+
+   
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setUser((data) => ({
+      ...data,
+      [name]: value
+    }))
+  }
+ const baseUrl = import.meta.env.VITE_API_BASE_URL;
+  
+ const  handlelogin = async (e)=>{
+     e.preventDefault()
+
+    try {
+        let res= await axios.post(`${baseUrl}/auth/login`,{
+        username:user.username,
+        password:user.password
+        })
+        console.log(res.data);
+        if (res.data.success == 1) {
+              localStorage.setItem( "token", JSON.stringify(res.data.token))
+              navigate("/")
+        }else{
+           alert("invalid Username Or Password");
+        }
+     
+   
+   
+    } catch (error) {
+         alert("invalid Username Or Password");
+          
+    } 
+    
+    
+  }
   return (
   <>
  <div className="auth-page-wrapper pt-5">
@@ -38,10 +82,10 @@ const Login = () => {
                 <p className="text-muted">Sign in to continue to Velzon.</p>
               </div>
               <div className="p-2 mt-4">
-                <form action="https://themesbrand.com/velzon/html/material/index.html">
+                <form onSubmit={handlelogin}>
                   <div className="mb-3">
                     <label htmlFor="username" className="form-label">Username</label>
-                    <input type="text" className="form-control" id="username" placeholder="Enter username" />
+                    <input type="text"  className="form-control" name="username" onChange={handleChange} placeholder="Enter username" />
                   </div>
                   <div className="mb-3">
                     <div className="float-end">
@@ -49,7 +93,7 @@ const Login = () => {
                     </div>
                     <label className="form-label" htmlFor="password-input">Password</label>
                     <div className="position-relative auth-pass-inputgroup mb-3">
-                      <input type="password" className="form-control pe-5 password-input" placeholder="Enter password" id="password-input" />
+                      <input onChange={handleChange} name="password"  type="password" className="form-control pe-5 password-input" placeholder="Enter password" id="password-input" />
                       <button className="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted shadow-none password-addon" type="button" id="password-addon"><i className="ri-eye-fill align-middle" /></button>
                     </div>
                   </div>
