@@ -143,12 +143,12 @@ const Sidebar = () => {
                   </li>
                   <li className="nav-item">
                     <Link
-                      to="/sale/product-wise-report"
+                      to="salesreport"
                       className={`nav-link ${
-                        isActive("/sale/product-wise-report") ? "active" : ""
+                        isActive("/sale/salesreport") ? "active" : ""
                       }`}
                     >
-                      Product wise Sales Report
+                     Date wise Sales Report
                     </Link>
                   </li>
                 </ul>
@@ -186,16 +186,16 @@ const Sidebar = () => {
                       All Purchases
                     </Link>
                   </li>
-                  {/* <li className="nav-item">
+                  <li className="nav-item">
                     <Link
-                      to="/sale/product-wise-report"
+                      to="/purchasereport"
                       className={`nav-link ${
-                        isActive("/sale/product-wise-report") ? "active" : ""
+                        isActive("/sale/purchasereport") ? "active" : ""
                       }`}
                     >
-                      Product wise Sales Report
+                     Date wise Sales Report
                     </Link>
-                  </li> */}
+                  </li>
                 </ul>
               )}
             </li>

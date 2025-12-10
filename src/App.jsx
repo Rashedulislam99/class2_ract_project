@@ -48,6 +48,8 @@ import LowStock from './Pages/Stocks/LowStock';
 import OverStock from './Pages/Stocks/OverStock';
 import Counter from './components/Counter';
 import PrivateRoute, { AuthContext } from './route/PrivateRoute';
+import SalesReport from './Pages/SalesReport/SalesReport';
+import PurchaseReport from './Pages/SalesReport/PurchaseReport';
 
 
 
@@ -132,7 +134,9 @@ function App() {
 
 
           {/* Stock routes */}
-          {/* <Route path="/stocksList" element={<StockList />} /> */}
+          <Route path="/salesreport" element={<SalesReport />} />
+          <Route path='/purchasereport' element={<PurchaseReport/>} />
+          
 
           {/* Login routes */}
 
