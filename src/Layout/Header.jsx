@@ -8,7 +8,7 @@ const Header = () => {
    console.log(user);
     const nav = useNavigate()
    const logout= ()=>{
-    alert()
+    alert("<h1> Dur hya gelam</h1> ")
      localStorage.removeItem("token")
      nav("/login")
     //  window.location.reload();

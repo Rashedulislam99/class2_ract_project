@@ -70,7 +70,7 @@ import PurchaseReport from './Pages/SalesReport/PurchaseReport';
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <Routes>
         <Route path="/Login" element={<Login />} />
         <Route path="/" element={<PrivateRoute> <Layout /> </PrivateRoute>}>
