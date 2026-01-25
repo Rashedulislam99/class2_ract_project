@@ -86,6 +86,8 @@ function App() {
           {/* Product routes */}
           <Route path="/productList" element={<ProductsList />} />
           <Route path="/product/create" element={<CreateProduct />} />
+
+          
           <Route path="/product/edit/:productID" element={<EditProduct />} />
 
 

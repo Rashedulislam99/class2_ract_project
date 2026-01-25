@@ -87,7 +87,7 @@ const OrderInvoice = () => {
                                 {orderDetails.map((item, i) => (
                                     <tr key={i}>
                                         <td>{i + 1}</td>
-                                        <td>{item.name || ""}</td>
+                                        <td>{item.product.name || ""}</td>
                                         <td>{item.qty}</td>
                                         <td>{item.price.toFixed(2)}</td>
                                         <td>{item.discount.toFixed(2)}</td>
