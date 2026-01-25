@@ -25,20 +25,23 @@ const Login = () => {
 
     try {
         let res= await axios.post(`${baseUrl}/auth/login`,{
-        username:user.username,
+        name:user.username,
         password:user.password
         })
         console.log(res.data);
         if (res.data.success == 1) {
               localStorage.setItem( "token", JSON.stringify(res.data.token))
+              localStorage.setItem( "user", JSON.stringify(res.data.user))
               navigate("/")
         }else{
-           alert("invalid Username Or Password");
+           alert("invalid Username Or Password gfsdsdfsdfsd");
         }
      
    
    
     } catch (error) {
+      console.log(error);
+      
          alert("invalid Username Or Password");
           
     } 
