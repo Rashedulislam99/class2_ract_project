@@ -73,7 +73,7 @@ const PurchaseList = () => {
               purchases.map((p, i) => (
                 <tr key={p.id} style={{ background: i % 2 === 0 ? '#f8f9fa' : '#ffffff' }}>
                   <td className="fw-bold text-primary">{p.id}</td>
-                  <td>{p.supplier_name}</td>
+                  <td>{p.supplier?.name || "N/A"}</td>
                   <td>{p.created_at}</td>
                   <td>{p.sub_total}</td>
                   <td>{p.discount_amount}</td>
