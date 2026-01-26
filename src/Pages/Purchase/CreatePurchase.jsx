@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import useCart from "../../components/useCart";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const CreatePurchase = () => {
   const baseUrl = import.meta.env.VITE_API_BASE_URL;
-
+const navigate = useNavigate();
   // Cart from localStorage
   const { addItem, delItem, clear, cart } = useCart("PurchaseCart");
 
@@ -150,6 +151,7 @@ const CreatePurchase = () => {
       console.log(res.data);
       clear(); // Clear cart after submission
       alert("Purchase invoice submitted successfully!");
+        navigate("/purchaseList");
     } catch (err) {
       console.log(err);
       alert("Error submitting purchase invoice!");

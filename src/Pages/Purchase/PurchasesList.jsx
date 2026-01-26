@@ -27,18 +27,21 @@ const PurchaseList = () => {
     fetchPurchases();
   }, []);
 
-  const deletePurchase = async (id) => {
-    if (!window.confirm("Are you sure you want to delete this purchase?")) return;
+const deletePurchase = async (id) => {
+  if (!window.confirm("Are you sure you want to delete this purchase?")) return;
 
-    try {
-      const res = await axios.post(`${baseUrl}/purchase/delete`, { id });
+  try {
+    const res = await axios.delete(`${baseUrl}/purchase/${id}`);
 
-      if (res.data.success === "yes") fetchPurchases();
-    } catch (err) {
-      console.log(err);
-      alert("Error deleting purchase!");
+    if (res.data.success) {
+      fetchPurchases(); 
     }
-  };
+  } catch (err) {
+    console.log(err);
+    alert("Error deleting purchase!");
+  }
+};
+
 
   if (loading) return <p>Loading purchases...</p>;
   if (error) return <p style={{ color: "red" }}>{error}</p>;

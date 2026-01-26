@@ -16,7 +16,7 @@ const StockList = () => {
   const fetchStocks = async () => {
     setLoading(true);
     try {
-      const res = await axios.post(`${baseUrl}/stock/stock_report/`, {
+      const res = await axios.post(`${baseUrl}/stock/stock_report`, {
         page,
         perpage: perPage,
       });
@@ -100,7 +100,7 @@ const StockList = () => {
                 stocks.map((stock) => (
                   <tr key={stock.id}>
                     <td>{stock.id}</td>
-                    <td>{stock.name}</td>
+                    <td>{stock.product?.name}</td>
                     {/* <td>{stock.qty}</td> */}
                     {/* <td>{stock.remark}</td> */}
                     <td>{stock.created_at}</td>

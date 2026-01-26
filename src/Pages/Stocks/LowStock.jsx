@@ -7,15 +7,11 @@ const LowStock = () => {
 
   const fetchLowStock = async () => {
     try {
-      const res = await axios.post(`${baseUrl}/stock/stock_report/`, {
-        page: 1,
-        perpage: 5000, // full list
-      });
-
+      const res = await axios.post(`${baseUrl}/stock/stock_report`);
       const data = res.data.stocks || [];
 
-      // Filter low stock (TOTAL <= 10)
-      const lowStock = data.filter((item) => Number(item.TOTAL) <= 10);
+      // Filter low stock (qty <= 10)
+      const lowStock = data.filter((item) => Number(item.qty) <= 10);
 
       setStocks(lowStock);
     } catch (err) {
@@ -28,13 +24,11 @@ const LowStock = () => {
   }, []);
 
   return (
-    
     <div className="container mt-5">
       <h3 className="mb-3 text-danger">Low Stock Items (≤ 10)</h3>
-      
+
       <table className="table table-bordered">
         <thead className="table-dark">
-      
           <tr>
             <th>ID</th>
             <th>Product</th>
@@ -48,8 +42,8 @@ const LowStock = () => {
             stocks.map((s) => (
               <tr key={s.id}>
                 <td>{s.id}</td>
-                <td>{s.name}</td>
-                <td className="text-danger fw-bold">{s.TOTAL}</td>
+                <td>{s.product?.name || "N/A"}</td>
+                <td className="text-danger fw-bold">{s.qty}</td>
                 <td>{s.created_at}</td>
               </tr>
             ))
@@ -62,9 +56,13 @@ const LowStock = () => {
           )}
         </tbody>
       </table>
-      <button className="btn btn-primary mb-3" onClick={() => window.print()}>
-  🖨 Print Report
-</button>
+
+      <button
+        className="btn btn-primary mb-3"
+        onClick={() => window.print()}
+      >
+        🖨 Print Report
+      </button>
     </div>
   );
 };

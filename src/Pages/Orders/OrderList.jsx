@@ -37,6 +37,7 @@ const getOrders = () => {
   const fetchOrders = async () => {
     try {
       const res = await axios.get(`${baseUrl}/order`);
+      console.log(res);
       setOrders(res.data.orders || []);
     } catch (err) {
       console.log(err);
@@ -128,7 +129,7 @@ const getOrders = () => {
               {orders && orders.map((o,i)=>(
                  <tr key={o.id} style={{ background: i % 2 === 0 ? '#f8f9fa' : '#ffffff' }}>
                   <td className="fw-bold text-primary">{o.id}</td>
-                  <td>{o.customer_name}</td>
+                  <td>{o.customer?.name}</td>
                   <td>{o.order_date}</td>
                   <td>{o.delivery_date}</td>
                   <td>{o.shipping_address}</td>

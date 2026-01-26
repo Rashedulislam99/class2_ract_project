@@ -7,17 +7,17 @@ const OverStock = () => {
 
   const fetchOverStock = async () => {
     try {
-      const res = await axios.post(`${baseUrl}/stock/stock_report/`, {
+      const res = await axios.post(`${baseUrl}/stock/over_stock`, {
         page: 1,
         perpage: 5000,
       });
-
+     console.log(res.data)
       const data = res.data.stocks || [];
 
       // Filter over stock (TOTAL >= 50)
-      const overStock = data.filter((item) => Number(item.TOTAL) >= 50);
-
-      setStocks(overStock);
+//       const overStock = data.filter((item) => Number(item.TOTAL) >= 50);
+// console.log("sssssssssssss",overStock)
+      setStocks(res.data);
     } catch (err) {
       console.error("Over stock error:", err);
     }
@@ -43,12 +43,12 @@ const OverStock = () => {
 
         <tbody>
           {stocks.length > 0 ? (
-            stocks.map((s) => (
-              <tr key={s.id}>
-                <td>{s.id}</td>
-                <td>{s.name}</td>
-                <td className="text-primary fw-bold">{s.TOTAL}</td>
-                <td>{s.created_at}</td>
+            stocks?.map((s) => (
+              <tr key={s.product.id}>
+                <td>{s.product.id}</td>
+                <td>{s.product.name}</td>
+                <td className="text-primary fw-bold">{s.total_qty}</td>
+                <td>{s.product.created_at}</td>
               </tr>
             ))
           ) : (
