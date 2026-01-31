@@ -11,12 +11,12 @@ const OverStock = () => {
         page: 1,
         perpage: 5000,
       });
-     console.log(res.data)
+      console.log(res.data)
       const data = res.data.stocks || [];
 
       // Filter over stock (TOTAL >= 50)
-//       const overStock = data.filter((item) => Number(item.TOTAL) >= 50);
-// console.log("sssssssssssss",overStock)
+      //       const overStock = data.filter((item) => Number(item.TOTAL) >= 50);
+      // console.log("sssssssssssss",overStock)
       setStocks(res.data);
     } catch (err) {
       console.error("Over stock error:", err);
@@ -37,7 +37,7 @@ const OverStock = () => {
             <th>ID</th>
             <th>Product</th>
             <th>Total Stock</th>
-            <th>Created</th>
+            <th class="text-center">Created</th>
           </tr>
         </thead>
 
@@ -48,7 +48,12 @@ const OverStock = () => {
                 <td>{s.product.id}</td>
                 <td>{s.product.name}</td>
                 <td className="text-primary fw-bold">{s.total_qty}</td>
-                <td>{s.product.created_at}</td>
+                <td class="text-center">
+                  {s.product?.created_at
+                    ? new Date(s.product.created_at).toLocaleString()
+                    : "-"}
+                </td>
+
               </tr>
             ))
           ) : (
@@ -60,9 +65,9 @@ const OverStock = () => {
           )}
         </tbody>
       </table>
-       <button className="btn btn-primary mb-3" onClick={() => window.print()}>
-  🖨 Print Report
-</button>
+      <button className="btn btn-primary mb-3" onClick={() => window.print()}>
+        🖨 Print Report
+      </button>
     </div>
   );
 };

@@ -5,28 +5,29 @@ import { Link, Navigate, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const Header = () => {
+  const baseUrl = import.meta.env.VITE_API_BASE_URL;
   const user = useContext(AuthContext);
   console.log(user);
   const nav = useNavigate()
   const logout = () => {
-     console.log("TOKEN =>", localStorage.getItem("token"));       
+    console.log("TOKEN =>", localStorage.getItem("token"));
     try {
-       fetch("http://localhost/Rashed_Laravel/react_api_laravel/public/api/auth/logout", {
-  method: "POST",
-  headers: {
-    "Authorization": `Bearer ${localStorage.getItem("token")}`,
-    "Accept": "application/json"
-  }
-})
-.then(res => res.json())
-.then(data => console.log(data))
-.catch(err => console.log(err));
+      fetch(`${baseUrl}/auth/logout`, {
+        method: "POST",
+        headers: {
+          "Authorization": `Bearer ${localStorage.getItem("token")}`,
+          "Accept": "application/json"
+        }
+      })
+        .then(res => res.json())
+        .then(data => console.log(data))
+        .catch(err => console.log(err));
 
     } catch (error) {
-       console.log(error);
-       
+      console.log(error);
+
     }
-  
+
 
   }
   return (

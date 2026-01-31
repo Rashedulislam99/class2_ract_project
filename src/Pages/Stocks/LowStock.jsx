@@ -7,13 +7,13 @@ const LowStock = () => {
 
   const fetchLowStock = async () => {
     try {
-      const res = await axios.post(`${baseUrl}/stock/stock_report`);
+      const res = await axios.post(`${baseUrl}/stock/low_stock`);
       const data = res.data.stocks || [];
 
       // Filter low stock (qty <= 10)
-      const lowStock = data.filter((item) => Number(item.qty) <= 10);
+      // const lowStock = data.filter((item) => Number(item.qty) <= 10);
 
-      setStocks(lowStock);
+      setStocks(data);
     } catch (err) {
       console.error("Low stock error:", err);
     }
@@ -27,7 +27,7 @@ const LowStock = () => {
     <div className="container mt-5">
       <h3 className="mb-3 text-danger">Low Stock Items (≤ 10)</h3>
 
-      <table className="table table-bordered">
+      <table className="table table-bordered text-center">
         <thead className="table-dark">
           <tr>
             <th>ID</th>
@@ -40,11 +40,16 @@ const LowStock = () => {
         <tbody>
           {stocks.length > 0 ? (
             stocks.map((s) => (
-              <tr key={s.id}>
-                <td>{s.id}</td>
+              <tr key={s.product?.id}>
+                <td>{s.product?.id}</td>
                 <td>{s.product?.name || "N/A"}</td>
-                <td className="text-danger fw-bold">{s.qty}</td>
-                <td>{s.created_at}</td>
+                <td className="text-danger fw-bold">{s.total_qty}</td>
+                <td>
+                  {s.product?.created_at
+                    ? new Date(s.product.created_at).toLocaleString()
+                    : "-"}
+                </td>
+
               </tr>
             ))
           ) : (

@@ -50,6 +50,7 @@ import Counter from './components/Counter';
 import PrivateRoute, { AuthContext } from './route/PrivateRoute';
 import SalesReport from './Pages/SalesReport/SalesReport';
 import PurchaseReport from './Pages/SalesReport/PurchaseReport';
+import Logout from './Login/Logout';
 
 
 
@@ -73,6 +74,7 @@ function App() {
     <BrowserRouter basename={import.meta.env.BASE_URL}>
       <Routes>
         <Route path="/Login" element={<Login />} />
+
         <Route path="/" element={<PrivateRoute> <Layout /> </PrivateRoute>}>
 
           {/* Dashboard */}
@@ -150,12 +152,8 @@ function App() {
           <Route path="/lowstock" element={<LowStock />} />
           <Route path="/overstock" element={<OverStock />} />
 
-
-
-
-
-
           <Route path="/counter" element={<Counter />} />
+          <Route path="/logout" element={<Logout />} />
 
 
 
